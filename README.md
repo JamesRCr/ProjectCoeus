@@ -24,4 +24,4 @@ Ideas:
   - Buys/sells on some algorithm/preference/strategy
   - Able to weigh probabilities to choose best strategy to imploy
 
-5. Sudoku lver
+5. Sudoku solver
