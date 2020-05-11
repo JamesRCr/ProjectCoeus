@@ -4,6 +4,7 @@ def label(func):
 
 
 test = label
+helper = label
 
 
 @test
