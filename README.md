@@ -23,3 +23,5 @@ Ideas:
   - Monitors indicators (user specified)
   - Buys/sells on some algorithm/preference/strategy
   - Able to weigh probabilities to choose best strategy to imploy
+
+5. Justine Pareja
