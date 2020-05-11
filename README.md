@@ -25,3 +25,6 @@ Ideas:
   - Able to weigh probabilities to choose best strategy to imploy
 
 5. Sudoku solver
+  - tries to solve the Sudoku
+  - sees what values are placed
+  - make sure to use the a gui
