@@ -1,19 +1,19 @@
 """ Sudoku Solver """
 
-import numpy as np
-
 
 def label(func):
     return func
 
+
 Helper = label
 Main = label
+Test = label
 
 
 class Entry:
     def __init__(self, initial_value):
         self._entry = initial_value
-        self.possibilities = []
+        self._possibilities = []
 
     @property
     def entry(self):
@@ -23,12 +23,55 @@ class Entry:
     def entry(self, value):
         self._entry = value
 
+    @property
+    def possibilities(self):
+        return self._possibilities
 
-grid = [[Entry(0) * 9] * 9]
+    @possibilities.setter
+    def possibilities(self, value):
+        self._possibilities.append(value)
+
+    @possibilities.deleter
+    def possibilities(self):
+        self._possibilities.clear()
+
+    def __str__(self):
+        return f"{self._entry}, {self._possibilities}"
 
 
-def pprint(grid):
-    print(np.matrix(grid))
+# Temp grid for now
+grid = [
+    [Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0)],
+    [Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0)],
+    [Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0)],
+    [Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0)],
+    [Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0)],
+    [Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0)],
+    [Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0)],
+    [Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0)],
+    [Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0), Entry(0)]
+]
+
+
+@Helper
+def pprint(g):
+    for i in range(3):
+        print(
+            f"{g[i][0].entry} {g[i][1].entry} {g[i][2].entry} | "
+            f"{g[i][3].entry} {g[i][4].entry} {g[i][5].entry} | "
+            f"{g[i][6].entry} {g[i][7].entry} {g[i][8].entry} | ")
+    print(f"{'-'*23}")
+    for i in range(3, 6):
+        print(
+            f"{g[i][0].entry} {g[i][1].entry} {g[i][2].entry} | "
+            f"{g[i][3].entry} {g[i][4].entry} {g[i][5].entry} | "
+            f"{g[i][6].entry} {g[i][7].entry} {g[i][8].entry} | ")
+    print(f"{'-'*23}")
+    for i in range(6, 9):
+        print(
+            f"{g[i][0].entry} {g[i][1].entry} {g[i][2].entry} | "
+            f"{g[i][3].entry} {g[i][4].entry} {g[i][5].entry} | "
+            f"{g[i][6].entry} {g[i][7].entry} {g[i][8].entry} | ")
 
 
 @Helper
@@ -67,6 +110,23 @@ def solve():
     """
 
 
-if __name__ == '__main__':
-    solve()
+@Test
+def test():
+    global grid
+    import random
+    for i in range(9):
+        for j in range(9):
+            grid[i][j].entry = random.randint(1, 9)
+            grid[i][j].possibilities = random.randint(1, 9)
+            grid[i][j].possibilities = random.randint(1, 9)
     pprint(grid)
+
+    print(grid[0][0])
+    del grid[0][0].possibilities
+    grid[0][0].entry = 4
+    print(grid[0][0])
+    pprint(grid)
+
+
+if __name__ == '__main__':
+    test()
