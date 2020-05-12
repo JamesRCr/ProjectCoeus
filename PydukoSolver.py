@@ -1,4 +1,4 @@
-  """ Sudoku Solver """
+""" Sudoku Solver """
 
 import numpy as np
 
@@ -10,15 +10,21 @@ Helper = label
 Main = label
 
 
-grid = [[0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0]]
+class Entry:
+    def __init__(self, initial_value):
+        self._entry = initial_value
+        self.possibilities = []
+
+    @property
+    def entry(self):
+        return self._entry
+
+    @entry.setter
+    def entry(self, value):
+        self._entry = value
+
+
+grid = [[Entry(0) * 9] * 9]
 
 
 def pprint(grid):
@@ -51,6 +57,14 @@ def checker(y, x, n):
 @Main
 def solve():
     pass
+    """
+    - Iterates through each entry
+    - Checks if entry is 0
+    - Checks all possible solutions for that entry
+    - If only one solution, that entry takes the solution
+    - After running through all entries, log the current state and iterate again
+    - If current log is the same as previous log, a final state has been reached
+    """
 
 
 if __name__ == '__main__':
