@@ -27,4 +27,14 @@ Ideas:
 5. Sudoku solver
   - tries to solve the Sudoku
   - sees what values are placed
-  - make sure to use the a gui
+  - make sure to use a gui
+
+6. R3 graphing calculator
+  - standard function support
+  - user input based on latex syntax
+  - vector and matrix support
+  - geometric algebra support
+  - vector field graphing
+  - parametric graphing
+  - multivariable and vector calculus
+  - ODE and PDE time solver
